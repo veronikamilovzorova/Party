@@ -1,0 +1,49 @@
+﻿﻿@model Party.Models.Birthday
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Kustuta Pidu</h2>
+
+<h3>Kas te thatahate kustuta see pidu?</h3>
+<div>
+    <h4>Pidu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Nimetus
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nimetus)
+        </dd>
+
+        <dt>
+            Epost
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt>
+            Notes
+        </dt>
+
+        <dd>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dd>
+
+            
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Kustuta" class="btn btn-default" /> |
+            @Html.ActionLink("Tagasi nimekirja", "Birthdays")
+        </div>
+    }
+</div>

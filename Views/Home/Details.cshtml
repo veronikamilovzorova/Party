@@ -1,0 +1,22 @@
+﻿@model Party.Models.Guest
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Külaline Üksikasjad</h2>
+
+<div>
+    <h4>Nimi: @Html.DisplayFor(model => model.Name)</h4>
+    <h4>Epost: @Html.DisplayFor(model => model.Email)</h4>
+    <h4>Number: @Html.DisplayFor(model => model.Phone)</h4>
+    <h4>Oslaed: @Html.DisplayFor(model => model.WillAttend)</h4>
+
+    @* Display the Notes field *@
+    <h4>Märkmed: @Html.DisplayFor(model => model.Notes)</h4>
+</div>
+
+<p>
+        @Html.ActionLink("Tagasi nimekirja", "Guests")
+   
+</p>

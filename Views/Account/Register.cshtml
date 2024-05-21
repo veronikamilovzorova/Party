@@ -1,0 +1,107 @@
+﻿@model Party.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+<style>
+    /* Add these styles to your CSS file or style section */
+
+    #loginForm {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .form-horizontal {
+        margin-top: 20px;
+    }
+
+    .control-label {
+        font-weight: bold;
+    }
+
+    .form-control {
+        width: 100%;
+    }
+
+    .checkbox {
+        margin-top: 10px;
+    }
+
+    .btn-default {
+        background-color: #337ab7;
+        color: #fff;
+    }
+
+        .btn-default:hover {
+            background-color: #286090;
+        }
+
+    .text-danger {
+        color: #a94442;
+    }
+
+    .col-md-offset-2 {
+        margin-left: 16.66666667%;
+    }
+
+    .col-md-10 {
+        width: 83.33333333%;
+    }
+
+    /* Optional: Add more styles for better visual appeal */
+    h2 {
+        color: #333;
+    }
+
+    hr {
+        border-color: #ddd;
+    }
+
+    p {
+        margin-top: 20px;
+    }
+
+    /* Customize the appearance of the links */
+    a {
+        color: #337ab7;
+    }
+
+        a:hover {
+            color: #23527c;
+        }
+</style>
+<h2>Registreerimine</h2>
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+<h4>Looge uus konto.</h4>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        <label for="m => m.Email" class="control-label col-md-2">Epost</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="m => m.Password" class="control-label col-md-2">Salasona</label>
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="(m => m.ConfirmPassword" class="control-label col-md-2">Korda salasona</label>
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Registreerimine" />
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "tere tulemast peole! Kutse";
+}
+<style>
+
+    .fontclass {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        color: #333;
+        font-size: 24px;
+    }
+</style>
+<h2>Kutse</h2>
+<div class="jumbotron">
+    <h1> @ViewBag.Greeting, Kallis sõber</h1>
+</div>
+
+<div class="fontclass">
+
+    <img src="~/Images/@ViewBag.ImagePath" width="500" height="500" />
+    <br />
+    @ViewBag.Message
+
+</div>
+
+<div>
+    @Html.ActionLink("Vastus kustele", "Ankeet", "Ankeet", new { @class = "btn btn-primary" })
+</div>

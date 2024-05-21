@@ -1,0 +1,132 @@
+﻿@using Party.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+<style>
+    /* Add these styles to your CSS file or style section */
+
+    #loginForm {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .form-horizontal {
+        margin-top: 20px;
+    }
+
+    .control-label {
+        font-weight: bold;
+    }
+
+    .form-control {
+        width: 100%;
+    }
+
+    .checkbox {
+        margin-top: 10px;
+    }
+
+    .btn-default {
+        background-color: #337ab7;
+        color: #fff;
+    }
+
+        .btn-default:hover {
+            background-color: #286090;
+        }
+
+    .text-danger {
+        color: #a94442;
+    }
+
+    .col-md-offset-2 {
+        margin-left: 16.66666667%;
+    }
+
+    .col-md-10 {
+        width: 83.33333333%;
+    }
+
+    /* Optional: Add more styles for better visual appeal */
+    h2 {
+        color: #333;
+    }
+
+    hr {
+        border-color: #ddd;
+    }
+
+    p {
+        margin-top: 20px;
+    }
+
+    /* Customize the appearance of the links */
+    a {
+        color: #337ab7;
+    }
+
+        a:hover {
+            color: #23527c;
+        }
+
+</style>
+<h2>Logi sisse</h2>
+<div class="row">
+    <div class="col-md-8">
+        <section id="loginForm">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <h4>Kasutage sisselogimiseks kohalikku kontot.</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <label for="m => m.Email" class="control-label col-md-2">Epost</label>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="m => m.Password" class="control-label col-md-2">Salasona</label>
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="checkbox">
+                            <label class="control-label">
+                                @Html.CheckBoxFor(m => m.RememberMe) Mäleta mind
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Logi sisse" class="btn btn-default" />
+                    </div>
+                </div>
+                <p>
+                    @Html.ActionLink("Registreeru uue kasutajana", "Register")
+                </p>
+                @* Enable this once you have account confirmation enabled for password reset functionality
+            <p>
+                @Html.ActionLink("Forgot your password?", "ForgotPassword")
+            </p>*@
+            }
+        </section>
+    </div>
+    @*<div class="col-md-4">
+        <section id="socialLoginForm">
+            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+        </section>
+    </div>*@
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
